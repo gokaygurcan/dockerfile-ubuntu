@@ -1,0 +1,17 @@
+# gokaygurcan/dockerfile-ubuntu
+
+language: bash
+services: docker
+
+sudo: false
+
+git:
+  depth: 1
+
+before_script: docker --version
+
+script:
+  - docker build --rm -t gokaygurcan/ubuntu:test .
+
+notifications:
+  email: false

@@ -6,8 +6,12 @@ LABEL maintainer="Gökay Gürcan <docker@gokaygurcan.com>"
 
 ENV DEBIAN_FRONTEND="noninteractive"
 
-RUN apt-get update -q && \
-    apt-get install -yq --no-install-recommends sudo language-pack-en && \
+RUN apt-get update -qq && \
+    apt-get install -yqq --no-install-recommends \
+    sudo \
+    language-pack-en && \
+    apt-get autoclean -yqq && \
+    apt-get autoremove -yqq && \
     rm -rf /var/lib/apt/lists/*
 
 ENV LANGUAGE="en_US.UTF-8" \
