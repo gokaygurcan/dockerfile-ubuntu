@@ -8,10 +8,13 @@ sudo: false
 git:
   depth: 1
 
-before_script: docker --version
+before_script:
+  - docker version
+  - docker info
 
 script:
   - docker build --rm -t gokaygurcan/ubuntu:test .
+  - docker run --rm gokaygurcan/ubuntu:test /bin/bash --version
 
 notifications:
   email: false

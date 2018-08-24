@@ -4,26 +4,50 @@ FROM ubuntu:18.04
 
 LABEL maintainer="Gökay Gürcan <docker@gokaygurcan.com>"
 
-ENV DEBIAN_FRONTEND="noninteractive"
+ENV DEBIAN_FRONTEND="noninteractive" \
+    USER=ubuntu
 
-RUN apt-get update -qq && \
-    apt-get install -yqq --no-install-recommends \
+RUN set -ex && \
+    apt-get update -qq && \
+    apt-get upgrade -yqq && \
+    apt-get install -yqq --no-install-recommends --no-install-suggests \
+    apt-utils \
+    apt-transport-https \
+    aptitude \
+    autoconf \
+    autotools-dev \
+    build-essential \
+    ca-certificates \
+    curl \
+    dpkg-dev \
+    file \
+    gcc \
+    git \
+    gnupg \
+    gzip \
+    language-pack-en \
+    make \
+    software-properties-common \
     sudo \
-    language-pack-en && \
-    apt-get autoclean -yqq && \
-    apt-get autoremove -yqq && \
-    rm -rf /var/lib/apt/lists/*
+    tar \
+    unzip \
+    wget
 
 ENV LANGUAGE="en_US.UTF-8" \
     LANG="en_US.UTF-8" \
     LC_ALL="en_US.UTF-8"
 
 RUN locale-gen en_US.UTF-8 && \
-    useradd --create-home --shell /bin/bash ubuntu && \
-    echo "ubuntu ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/ubuntu
+    useradd --create-home --shell /bin/bash $USER && \
+    echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER
 
-USER ubuntu
+RUN apt-get autoclean -yqq && \
+    apt-get autoremove -yqq && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /tmp/* && \
+    rm -rf /var/tmp/*
 
-ENV HOME /home/ubuntu
+WORKDIR /home/$USER
 
-WORKDIR /home/ubuntu
+USER $USER
+
