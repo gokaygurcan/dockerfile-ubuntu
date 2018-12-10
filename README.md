@@ -30,10 +30,12 @@
 - gzip
 - language-pack-en
 - make
+- nano
 - software-properties-common
 - sudo
 - tar
 - unzip
+- vim
 - wget
 
 <h2>Usage</h2>

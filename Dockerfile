@@ -2,7 +2,16 @@
 
 FROM ubuntu:18.04
 
-LABEL maintainer="Gökay Gürcan <docker@gokaygurcan.com>"
+# metadata
+LABEL maintainer = "Gökay Gürcan <docker@gokaygurcan.com>"
+LABEL com.gokaygurcan.project.name = "dockerfile-ubuntu"
+LABEL com.gokaygurcan.project.version = "1.0.1"
+LABEL org.label-schema.name = "dockerfile-ubuntu"
+LABEL org.label-schema.description = "Ubuntu 18.04 with necessary additions."
+LABEL org.label-schema.vcs-url = "https://github.com/gokaygurcan/dockerfile-ubuntu"
+LABEL org.label-schema.vendor = "gokaygurcan"
+LABEL org.label-schema.version = "1.0.1"
+LABEL org.label-schema.schema-version = "1.0"
 
 ENV DEBIAN_FRONTEND="noninteractive" \
     USER=ubuntu
@@ -27,10 +36,12 @@ RUN set -ex && \
     gzip \
     language-pack-en \
     make \
+    nano \
     software-properties-common \
     sudo \
     tar \
     unzip \
+    vim \
     wget
 
 ENV LANGUAGE="en_US.UTF-8" \
