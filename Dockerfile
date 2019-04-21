@@ -3,15 +3,7 @@
 FROM ubuntu:18.04
 
 # metadata
-LABEL maintainer = "Gökay Gürcan <docker@gokaygurcan.com>"
-LABEL com.gokaygurcan.project.name = "dockerfile-ubuntu"
-LABEL com.gokaygurcan.project.version = "1.0.1"
-LABEL org.label-schema.name = "dockerfile-ubuntu"
-LABEL org.label-schema.description = "Ubuntu 18.04 with necessary additions."
-LABEL org.label-schema.vcs-url = "https://github.com/gokaygurcan/dockerfile-ubuntu"
-LABEL org.label-schema.vendor = "gokaygurcan"
-LABEL org.label-schema.version = "1.0.1"
-LABEL org.label-schema.schema-version = "1.0"
+LABEL maintainer "Gökay Gürcan <docker@gokaygurcan.com>"
 
 ENV DEBIAN_FRONTEND="noninteractive" \
     USER=ubuntu
@@ -30,13 +22,17 @@ RUN set -ex && \
     curl \
     dpkg-dev \
     file \
+    iputils-ping \
     gcc \
     git \
+    git-extras \
     gnupg \
     gzip \
+    htop \
     language-pack-en \
     make \
     nano \
+    net-tools \
     software-properties-common \
     sudo \
     tar \
@@ -54,11 +50,10 @@ RUN locale-gen en_US.UTF-8 && \
 
 RUN apt-get autoclean -yqq && \
     apt-get autoremove -yqq && \
-    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/lib/{apt,dpkg,cache,log}/ && \
     rm -rf /tmp/* && \
     rm -rf /var/tmp/*
 
 WORKDIR /home/$USER
 
 USER $USER
-

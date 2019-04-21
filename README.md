@@ -24,13 +24,17 @@
 - curl
 - dpkg-dev
 - file
+- iputils-ping
 - gcc
 - git
+- git-extras
 - gnupg
 - gzip
+- htop
 - language-pack-en
 - make
 - nano
+- net-tools
 - software-properties-common
 - sudo
 - tar
