@@ -15,24 +15,24 @@ before_script:
 script:
   - docker build --rm -t gokaygurcan/ubuntu:test .
   - docker run --rm gokaygurcan/ubuntu:test /bin/bash --version
+  - docker run --rm gokaygurcan/ubuntu:test /bin/gzip --version
+  - docker run --rm gokaygurcan/ubuntu:test /bin/nano --version
+  - docker run --rm gokaygurcan/ubuntu:test /bin/netstat --version
+  - docker run --rm gokaygurcan/ubuntu:test /bin/ping -V
+  - docker run --rm gokaygurcan/ubuntu:test /bin/tar --version
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/apt --version
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/aptitude --version
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/autoconf --version
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/curl --version
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/dpkg --version
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/file --version
-  - docker run --rm gokaygurcan/ubuntu:test /usr/bin/ping -V
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/gcc --version
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/git --version
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/gpg --version
-  - docker run --rm gokaygurcan/ubuntu:test /usr/bin/gzip --version
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/htop --version
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/make --version
-  - docker run --rm gokaygurcan/ubuntu:test /usr/bin/nano --version
-  - docker run --rm gokaygurcan/ubuntu:test /usr/bin/netstat --version
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/sudo --version
-  - docker run --rm gokaygurcan/ubuntu:test /usr/bin/tar --version
-  - docker run --rm gokaygurcan/ubuntu:test /usr/bin/unzip -V
+  - docker run --rm gokaygurcan/ubuntu:test /usr/bin/unzip -v
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/vim --version
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/wget --version
 
