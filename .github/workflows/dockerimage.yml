@@ -1,0 +1,40 @@
+
+# gokaygurcan/dockerfile-ubuntu
+
+name: Deploy to Docker Hub
+
+on:
+   push:
+     branches:
+      - master
+   pull_request:
+     branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Login to Docker Hub
+        if: success()
+        uses: actions-hub/docker/login@master
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build image
+        if: success()
+        run: docker build --file Dockerfile --tag gokaygurcan/ubuntu:latest .
+
+      - name: Test
+        if: success()
+        run: docker run --rm gokaygurcan/ubuntu:latest /bin/bash --version
+
+      - name: Push to Docker registry
+        if: success()
+        uses: actions-hub/docker@master
+        with:
+          args: push gokaygurcan/ubuntu:latest
