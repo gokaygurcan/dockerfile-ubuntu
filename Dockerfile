@@ -33,6 +33,8 @@ RUN set -ex && \
     make \
     nano \
     net-tools \
+    openssh-client \
+    openssh-server \
     software-properties-common \
     sudo \
     tar \
