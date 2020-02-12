@@ -31,6 +31,7 @@ script:
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/gpg --version
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/htop --version
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/make --version
+  - docker run --rm gokaygurcan/ubuntu:test /usr/bin/ssh -V
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/sudo --version
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/unzip -v
   - docker run --rm gokaygurcan/ubuntu:test /usr/bin/vim --version
