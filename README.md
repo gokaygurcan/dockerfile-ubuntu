@@ -35,6 +35,8 @@
 - make
 - nano
 - net-tools
+- ssh-client
+- ssh-server
 - software-properties-common
 - sudo
 - tar
