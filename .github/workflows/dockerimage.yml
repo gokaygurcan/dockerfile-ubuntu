@@ -1,40 +1,73 @@
 
 # gokaygurcan/dockerfile-ubuntu
 
-name: Deploy to Docker Hub
+name: 'Ubuntu'
 
 on:
-   push:
-     branches:
-      - master
-   pull_request:
-     branches:
-      - master
+  push:
+  pull_request:
+    branches:
+    - master
+
+env:
+  GITHUB: ${{ toJson(github) }}
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    
+  bionic:
+    name: 'Bionic'
+    runs-on: 'ubuntu-latest'
+    env:
+      CI: true
     steps:
-      - uses: actions/checkout@master
+    - id: 'checkout'
+      name: 'Checkout'
+      uses: 'actions/checkout@v2'
 
-      - name: Login to Docker Hub
-        if: success()
-        uses: actions-hub/docker/login@master
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    - id: 'login'
+      name: 'Login to Docker Hub'
+      uses: 'actions-hub/docker/login@master'
+      if: success()
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build image
-        if: success()
-        run: docker build --file Dockerfile --tag gokaygurcan/ubuntu:latest .
+    - id: 'build'
+      name: 'Build image'
+      if: success()
+      run: |
+        docker build --file Dockerfile --tag gokaygurcan/ubuntu:latest .
 
-      - name: Test
-        if: success()
-        run: docker run --rm gokaygurcan/ubuntu:latest /bin/bash --version
+    - id: 'test'
+      name: 'Test'
+      if: success()
+      run: |
+        docker run --rm gokaygurcan/ubuntu /bin/bash --version
+        docker run --rm gokaygurcan/ubuntu /bin/gzip --version
+        docker run --rm gokaygurcan/ubuntu /bin/nano --version
+        docker run --rm gokaygurcan/ubuntu /bin/netstat --version
+        docker run --rm gokaygurcan/ubuntu /bin/ping -V
+        docker run --rm gokaygurcan/ubuntu /bin/tar --version
+        docker run --rm gokaygurcan/ubuntu /usr/bin/apt --version
+        docker run --rm gokaygurcan/ubuntu /usr/bin/aptitude --version
+        docker run --rm gokaygurcan/ubuntu /usr/bin/autoconf --version
+        docker run --rm gokaygurcan/ubuntu /usr/bin/curl --version
+        docker run --rm gokaygurcan/ubuntu /usr/bin/dpkg --version
+        docker run --rm gokaygurcan/ubuntu /usr/bin/file --version
+        docker run --rm gokaygurcan/ubuntu /usr/bin/gcc --version
+        docker run --rm gokaygurcan/ubuntu /usr/bin/git --version
+        docker run --rm gokaygurcan/ubuntu /usr/bin/gpg --version
+        docker run --rm gokaygurcan/ubuntu /usr/bin/htop --version
+        docker run --rm gokaygurcan/ubuntu /usr/bin/make --version
+        docker run --rm gokaygurcan/ubuntu /usr/bin/make --version
+        docker run --rm gokaygurcan/ubuntu /usr/bin/ssh -V
+        docker run --rm gokaygurcan/ubuntu /usr/bin/sudo --version
+        docker run --rm gokaygurcan/ubuntu /usr/bin/unzip -v
+        docker run --rm gokaygurcan/ubuntu /usr/bin/vim --version
+        docker run --rm gokaygurcan/ubuntu /usr/bin/wget --version
 
-      - name: Push to Docker registry
-        if: success()
-        uses: actions-hub/docker@master
-        with:
-          args: push gokaygurcan/ubuntu:latest
+    - id: 'push'
+      name: 'Push to Docker Registry'
+      uses: 'actions-hub/docker@master'
+      if: success()
+      with:
+        args: push gokaygurcan/ubuntu:latest
