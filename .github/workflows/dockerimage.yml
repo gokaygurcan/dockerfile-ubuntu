@@ -68,6 +68,6 @@ jobs:
     - id: 'push'
       name: 'Push to Docker Registry'
       uses: 'actions-hub/docker@master'
-      if: success()
+      if: github.ref == 'refs/heads/master'
       with:
         args: push gokaygurcan/ubuntu:latest
