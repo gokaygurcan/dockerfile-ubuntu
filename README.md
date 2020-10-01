@@ -1,6 +1,6 @@
-# Ubuntu 18.04
+# Ubuntu Bionic (18.04)
 
-[![Docker Build Status](https://img.shields.io/docker/build/gokaygurcan/ubuntu.svg?style=for-the-badge&logo=docker&colorA=22b8eb)](https://hub.docker.com/r/gokaygurcan/ubuntu/) [![Travis CI](https://img.shields.io/travis/gokaygurcan/dockerfile-ubuntu.svg?style=for-the-badge&logo=travis&colorA=39a85b)](https://travis-ci.org/gokaygurcan/dockerfile-ubuntu) [![MicroBadger](https://img.shields.io/microbadger/image-size/gokaygurcan/ubuntu.svg?style=for-the-badge&colorA=337ab7&colorB=252528)](https://microbadger.com/images/gokaygurcan/ubuntu)
+[![Docker Build Status](https://img.shields.io/docker/build/gokaygurcan/ubuntu.svg?style=for-the-badge&logo=docker&colorA=22b8eb)](https://hub.docker.com/r/gokaygurcan/ubuntu/) [![MicroBadger](https://img.shields.io/microbadger/image-size/gokaygurcan/ubuntu.svg?style=for-the-badge&colorA=337ab7&colorB=252528)](https://microbadger.com/images/gokaygurcan/ubuntu)
 
 ---
 
@@ -17,6 +17,7 @@
 - apt-utils
 - apt-transport-https
 - aptitude
+- aria2
 - autoconf
 - autotools-dev
 - build-essential
@@ -26,11 +27,13 @@
 - file
 - iputils-ping
 - gcc
+- gh
 - git
 - git-extras
 - gnupg
 - gzip
 - htop
+- jq
 - language-pack-en
 - make
 - nano
@@ -55,5 +58,5 @@ docker pull gokaygurcan/ubuntu
 To start an interactive shell
 
 ```bash
-docker run --rm -it gokaygurcan/ubuntu /bin/bash
+docker run --rm -it gokaygurcan/ubuntu bash
 ```
