@@ -25,43 +25,46 @@ jobs:
     - id: 'login'
       name: 'Login to Docker Hub'
       uses: 'actions-hub/docker/login@master'
-      if: success()
+      if: github.ref == 'refs/heads/master'
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
     - id: 'build'
       name: 'Build image'
-      if: success()
       run: |
         docker build --file Dockerfile --tag gokaygurcan/ubuntu:latest .
+
     - id: 'test'
       name: 'Test'
-      if: success()
       run: |
-        docker run --rm gokaygurcan/ubuntu /bin/bash --version
-        docker run --rm gokaygurcan/ubuntu /bin/gzip --version
-        docker run --rm gokaygurcan/ubuntu /bin/nano --version
-        docker run --rm gokaygurcan/ubuntu /bin/netstat --version
-        docker run --rm gokaygurcan/ubuntu /bin/ping -V
-        docker run --rm gokaygurcan/ubuntu /bin/tar --version
-        docker run --rm gokaygurcan/ubuntu /usr/bin/apt --version
-        docker run --rm gokaygurcan/ubuntu /usr/bin/aptitude --version
-        docker run --rm gokaygurcan/ubuntu /usr/bin/autoconf --version
-        docker run --rm gokaygurcan/ubuntu /usr/bin/curl --version
-        docker run --rm gokaygurcan/ubuntu /usr/bin/dpkg --version
-        docker run --rm gokaygurcan/ubuntu /usr/bin/file --version
-        docker run --rm gokaygurcan/ubuntu /usr/bin/gcc --version
-        docker run --rm gokaygurcan/ubuntu /usr/bin/git --version
-        docker run --rm gokaygurcan/ubuntu /usr/bin/gpg --version
-        docker run --rm gokaygurcan/ubuntu /usr/bin/htop --version
-        docker run --rm gokaygurcan/ubuntu /usr/bin/make --version
-        docker run --rm gokaygurcan/ubuntu /usr/bin/make --version
-        docker run --rm gokaygurcan/ubuntu /usr/bin/ssh -V
-        docker run --rm gokaygurcan/ubuntu /usr/bin/sudo --version
-        docker run --rm gokaygurcan/ubuntu /usr/bin/unzip -v
-        docker run --rm gokaygurcan/ubuntu /usr/bin/vim --version
-        docker run --rm gokaygurcan/ubuntu /usr/bin/wget --version
+        docker run --rm gokaygurcan/ubuntu apt --version
+        docker run --rm gokaygurcan/ubuntu aptitude --version
+        docker run --rm gokaygurcan/ubuntu autoconf --version
+        docker run --rm gokaygurcan/ubuntu aria2c --version
+        docker run --rm gokaygurcan/ubuntu bash --version
+        docker run --rm gokaygurcan/ubuntu curl --version
+        docker run --rm gokaygurcan/ubuntu dpkg --version
+        docker run --rm gokaygurcan/ubuntu file --version
+        docker run --rm gokaygurcan/ubuntu gcc --version
+        docker run --rm gokaygurcan/ubuntu gh --version
+        docker run --rm gokaygurcan/ubuntu git --version
+        docker run --rm gokaygurcan/ubuntu gpg --version
+        docker run --rm gokaygurcan/ubuntu gzip --version
+        docker run --rm gokaygurcan/ubuntu htop --version
+        docker run --rm gokaygurcan/ubuntu jq --version
+        docker run --rm gokaygurcan/ubuntu make --version
+        docker run --rm gokaygurcan/ubuntu nano --version
+        docker run --rm gokaygurcan/ubuntu netstat --version
+        docker run --rm gokaygurcan/ubuntu ping -V
+        docker run --rm gokaygurcan/ubuntu python3 --version
+        docker run --rm gokaygurcan/ubuntu ssh -V
+        docker run --rm gokaygurcan/ubuntu sudo --version
+        docker run --rm gokaygurcan/ubuntu tar --version
+        docker run --rm gokaygurcan/ubuntu unzip -v
+        docker run --rm gokaygurcan/ubuntu vim --version
+        docker run --rm gokaygurcan/ubuntu wget --version
+
     - id: 'push'
       name: 'Push to Docker Registry'
       uses: 'actions-hub/docker@master'
