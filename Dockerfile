@@ -1,6 +1,6 @@
 # gokaygurcan/dockerfile-ubuntu
 
-FROM ubuntu:bionic
+FROM ubuntu:focal
 
 # metadata
 LABEL maintainer "Gökay Gürcan <docker@gokaygurcan.com>"
@@ -21,15 +21,18 @@ RUN set -ex && \
     apt-get dist-upgrade -yqq && \
     # install packages
     apt-get install -yqq --no-install-recommends --no-install-suggests \
+    apt \
     apt-utils \
     apt-transport-https \
     aptitude \
     aria2 \
     autoconf \
     autotools-dev \
+    brotli \
     build-essential \
     ca-certificates \
     curl \
+    dnsutils \
     dpkg-dev \
     file \
     iputils-ping \
@@ -37,16 +40,23 @@ RUN set -ex && \
     git \
     git-extras \
     gnupg \
+    gnupg2 \
     gzip \
     htop \
     jq \
     language-pack-en \
     make \
     nano \
+    nmap \
     net-tools \
+    python3 \
+    python3-dev \
+    python3-pip \
+    python3-venv \
     openssh-client \
     openssh-server \
     software-properties-common \
+    sqlite3 \
     sudo \
     tar \
     unzip \
