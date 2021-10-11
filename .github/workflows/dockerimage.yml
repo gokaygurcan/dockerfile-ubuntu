@@ -39,25 +39,35 @@ jobs:
       name: 'Test'
       run: |
         docker run --rm gokaygurcan/ubuntu apt --version
+        docker run --rm gokaygurcan/ubuntu apt-get --version
         docker run --rm gokaygurcan/ubuntu aptitude --version
-        docker run --rm gokaygurcan/ubuntu autoconf --version
         docker run --rm gokaygurcan/ubuntu aria2c --version
+        docker run --rm gokaygurcan/ubuntu autoconf --version
         docker run --rm gokaygurcan/ubuntu bash --version
+        docker run --rm gokaygurcan/ubuntu brotli --version
         docker run --rm gokaygurcan/ubuntu curl --version
+        docker run --rm gokaygurcan/ubuntu dig -v
         docker run --rm gokaygurcan/ubuntu dpkg --version
         docker run --rm gokaygurcan/ubuntu file --version
+        docker run --rm gokaygurcan/ubuntu g++ --version
         docker run --rm gokaygurcan/ubuntu gcc --version
         docker run --rm gokaygurcan/ubuntu gh --version
         docker run --rm gokaygurcan/ubuntu git --version
         docker run --rm gokaygurcan/ubuntu gpg --version
+        docker run --rm gokaygurcan/ubuntu gpg2 --version
         docker run --rm gokaygurcan/ubuntu gzip --version
         docker run --rm gokaygurcan/ubuntu htop --version
         docker run --rm gokaygurcan/ubuntu jq --version
         docker run --rm gokaygurcan/ubuntu make --version
         docker run --rm gokaygurcan/ubuntu nano --version
         docker run --rm gokaygurcan/ubuntu netstat --version
+        docker run --rm gokaygurcan/ubuntu nmap --version
+        docker run --rm gokaygurcan/ubuntu nslookup -type=ns github.com
+        docker run --rm gokaygurcan/ubuntu nsupdate -V
         docker run --rm gokaygurcan/ubuntu ping -V
+        docker run --rm gokaygurcan/ubuntu pip3 --version
         docker run --rm gokaygurcan/ubuntu python3 --version
+        docker run --rm gokaygurcan/ubuntu sqlite3 --version
         docker run --rm gokaygurcan/ubuntu ssh -V
         docker run --rm gokaygurcan/ubuntu sudo --version
         docker run --rm gokaygurcan/ubuntu tar --version
