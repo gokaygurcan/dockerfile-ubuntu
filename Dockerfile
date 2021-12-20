@@ -5,6 +5,7 @@ FROM ubuntu:focal
 # metadata
 LABEL maintainer "Gökay Gürcan <docker@gokaygurcan.com>"
 
+# set up environment variables
 ENV DEBIAN_FRONTEND="noninteractive" \
     LANGUAGE="en_US.UTF-8" \
     LANG="en_US.UTF-8" \
@@ -12,9 +13,10 @@ ENV DEBIAN_FRONTEND="noninteractive" \
     TZ="Europe/Amsterdam" \
     USER="ubuntu"
 
+# install packages
 RUN set -ex && \
     # enable retry logic for apt up to 5 times
-    echo "APT::Acquire::Retries \"5\";" > /etc/apt/apt.conf.d/80-retries
+    echo "APT::Acquire::Retries \"5\";" > /etc/apt/apt.conf.d/80-retries && \
     # configure apt to always assume Y
     echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes && \
     # update timezone
