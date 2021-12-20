@@ -80,7 +80,7 @@ RUN set -ex && \
     tzdata \
     unzip zip \
     vim \
-    wget && \    
+    wget && \
     # install github cli
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key C99B11DEB97541F0 && \
     apt-add-repository https://cli.github.com/packages && \
