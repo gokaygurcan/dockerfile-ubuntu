@@ -12,8 +12,8 @@ env:
   GITHUB: ${{ toJson(github) }}
 
 jobs:
-  bionic:
-    name: 'Bionic'
+  ubuntu:
+    name: 'Ubuntu'
     runs-on: 'ubuntu-latest'
     env:
       CI: true
@@ -44,6 +44,7 @@ jobs:
         docker run --rm gokaygurcan/ubuntu aria2c --version
         docker run --rm gokaygurcan/ubuntu autoconf --version
         docker run --rm gokaygurcan/ubuntu bash --version
+        docker run --rm gokaygurcan/ubuntu bison --version
         docker run --rm gokaygurcan/ubuntu brotli --version
         docker run --rm gokaygurcan/ubuntu curl --version
         docker run --rm gokaygurcan/ubuntu dig -v
@@ -67,6 +68,7 @@ jobs:
         docker run --rm gokaygurcan/ubuntu ping -V
         docker run --rm gokaygurcan/ubuntu pip3 --version
         docker run --rm gokaygurcan/ubuntu python3 --version
+        docker run --rm gokaygurcan/ubuntu rsync --version
         docker run --rm gokaygurcan/ubuntu sqlite3 --version
         docker run --rm gokaygurcan/ubuntu ssh -V
         docker run --rm gokaygurcan/ubuntu sudo --version
