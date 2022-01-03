@@ -5,15 +5,23 @@ FROM ubuntu:focal
 # metadata
 LABEL maintainer "Gökay Gürcan <docker@gokaygurcan.com>"
 
+# set up environment variables
 ENV DEBIAN_FRONTEND="noninteractive" \
     LANGUAGE="en_US.UTF-8" \
     LANG="en_US.UTF-8" \
     LC_ALL="en_US.UTF-8" \
+    TZ="Europe/Amsterdam" \
     USER="ubuntu"
 
+# install packages
 RUN set -ex && \
+    # enable retry logic for apt up to 5 times
+    echo "APT::Acquire::Retries \"5\";" > /etc/apt/apt.conf.d/80-retries && \
     # configure apt to always assume Y
     echo "APT::Get::Assume-Yes \"true\";" > /etc/apt/apt.conf.d/90assumeyes && \
+    # update timezone
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
+    echo $TZ > /etc/timezone && \
     # update package sources
     apt-get update -qq && \
     # upgrade packages
@@ -28,13 +36,20 @@ RUN set -ex && \
     aria2 \
     autoconf \
     autotools-dev \
+    binutils \
+    bison \
     brotli \
     build-essential \
+    bzip2 \
+    coreutils \
     ca-certificates \
     curl \
+    dbus \
+    dialog \
     dnsutils \
     dpkg-dev \
     file \
+    iproute2 \
     iputils-ping \
     gcc \
     git \
@@ -45,21 +60,27 @@ RUN set -ex && \
     htop \
     jq \
     language-pack-en \
+    libc++abi-dev libc++-dev libcurl4 \
+    locales \
     make \
     nano \
     nmap \
     net-tools \
+    openssh-client \
+    openssh-server \
+    p7zip-rar \
+    pkg-config \
     python3 \
     python3-dev \
     python3-pip \
     python3-venv \
-    openssh-client \
-    openssh-server \
+    rsync \
     software-properties-common \
     sqlite3 \
     sudo \
     tar \
-    unzip \
+    tzdata \
+    unzip zip \
     vim \
     wget && \
     # install github cli
@@ -86,8 +107,9 @@ RUN set -ex && \
     echo 'root hard nofile 65536' >> /etc/security/limits.conf && \
     echo 'session required pam_limits.so' >> /etc/pam.d/common-session && \
     echo 'session required pam_limits.so' >> /etc/pam.d/common-session-noninteractive && \
-    echo 'DefaultLimitNOFILE=65536' >> /etc/systemd/system.conf
-
-WORKDIR /home/$USER
+    echo 'DefaultLimitNOFILE=65536' >> /etc/systemd/system.conf && \
+    echo 'DefaultLimitSTACK=16M:infinity' >> /etc/systemd/system.conf
 
 USER $USER
+
+WORKDIR /home/$USER
