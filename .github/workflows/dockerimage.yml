@@ -44,6 +44,7 @@ jobs:
     - id: test
       name: Test
       run: |
+        docker run --rm gokaygurcan/ubuntu printenv
         docker run --rm gokaygurcan/ubuntu apt --version
         docker run --rm gokaygurcan/ubuntu apt-get --version
         docker run --rm gokaygurcan/ubuntu aptitude --version
