@@ -1,6 +1,6 @@
 # gokaygurcan/dockerfile-ubuntu
 
-FROM ubuntu:focal
+FROM ubuntu:jammy
 
 # metadata
 LABEL maintainer "Gökay Gürcan <docker@gokaygurcan.com>"
@@ -29,13 +29,17 @@ RUN set -ex && \
     apt-get dist-upgrade -yqq && \
     # install packages
     apt-get install -yqq --no-install-recommends --no-install-suggests \
+    adduser \
     apt \
     apt-utils \
     apt-transport-https \
     aptitude \
+    atop \
     aria2 \
     autoconf \
     autotools-dev \
+    bash-completion \
+    bash \
     binutils \
     bison \
     brotli \
@@ -47,17 +51,23 @@ RUN set -ex && \
     dbus \
     dialog \
     dnsutils \
+    dpkg \
     dpkg-dev \
+    fdisk \
     file \
-    iproute2 \
-    iputils-ping \
+    findutils \
     gcc \
     git \
     git-extras \
     gnupg \
     gnupg2 \
+    grep \
     gzip \
+    hostname \
     htop \
+    iproute2 \
+    iptables \
+    iputils-ping \
     jq \
     language-pack-en \
     libc++abi-dev libc++-dev libcurl4 \
@@ -68,6 +78,7 @@ RUN set -ex && \
     net-tools \
     openssh-client \
     openssh-server \
+    passwd \
     p7zip-rar \
     pkg-config \
     python3 \
@@ -79,10 +90,16 @@ RUN set -ex && \
     sqlite3 \
     sudo \
     tar \
+    tcpdump \
+    telnet \
+    time \
+    tree \
     tzdata \
     unzip zip \
     vim \
-    wget && \
+    wget \
+    whois \
+    zip && \
     # install GitHub CLI
     curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg && \
     sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg && \

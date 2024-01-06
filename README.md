@@ -1,4 +1,4 @@
-# Ubuntu 20.04.1 (Focal)
+# Ubuntu 22.04.3 LTS (Jammy Jellyfish) (2023-08-10)
 
 ## Environment variables
 
@@ -10,6 +10,8 @@
 
 ## Available packages
 
+- adduser
+- atop
 - apt (apt, apt-get)
 - apt-utils
 - apt-transport-https
@@ -17,6 +19,8 @@
 - aria2 (aria2c)
 - autoconf
 - autotools-dev
+- bash-completion
+- bash
 - binutils
 - bison
 - brotli
@@ -28,18 +32,25 @@
 - dbus
 - dialog
 - dnsutils (dig, nslookup, nsupdate)
+- dpkg
 - dpkg-dev
 - file
 - iproute2
 - iputils-ping
 - gcc
 - gh (github.com/cli/cli)
+- fdisk
+- findutils
 - git
 - git-extras
 - gnupg (v1, v2)
 - gzip
+- grep
+- hostname
 - htop
 - iputils-ping (ping, ping4, ping6)
+- iproute2
+- iptables
 - jq
 - language-pack-en
 - locales
@@ -48,6 +59,7 @@
 - net-tools (netstat, ifconfig, route)
 - nmap
 - p7zip-rar
+- passwd
 - pkg-config
 - python (python3, pip3, venv)
 - rsync
@@ -57,10 +69,15 @@
 - sqlite
 - sudo
 - tar
+- tcpdump
+- telnet
+- time
+- tree
 - tzdata
-- unzip zip
+- unzip / zip
 - vim
 - wget
+- whois
 
 ## Usage
 
