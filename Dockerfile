@@ -1,8 +1,6 @@
 # gokaygurcan/dockerfile-ubuntu
 
-FROM ubuntu:jammy
-
-# metadata
+FROM ubuntu:noble
 LABEL maintainer "Gökay Gürcan <docker@gokaygurcan.com>"
 
 # set up environment variables
