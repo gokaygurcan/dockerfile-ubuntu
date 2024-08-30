@@ -1,4 +1,4 @@
-# Ubuntu 22.04.3 LTS (Jammy Jellyfish) (2023-08-10)
+# Ubuntu 24.04.1 (Noble Numbat)
 
 ## Environment variables
 

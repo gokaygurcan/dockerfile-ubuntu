@@ -1,8 +1,6 @@
 # gokaygurcan/dockerfile-ubuntu
 
-FROM ubuntu:jammy
-
-# metadata
+FROM ubuntu:noble
 LABEL maintainer "Gökay Gürcan <docker@gokaygurcan.com>"
 
 # set up environment variables
@@ -108,8 +106,8 @@ RUN set -ex && \
     apt-get install -yqq --no-install-recommends --no-install-suggests gh && \
     # setup locale
     locale-gen en_US.UTF-8 && \
-    # create new user
-    useradd --create-home --shell /bin/bash $USER && \
+    # create new user, if doesn't exist
+    id -u ubuntu >/dev/null 2>&1 || useradd --create-home --shell /bin/bash $USER && \
     # grant root privileges
     echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER && \
     # clean up
