@@ -1,7 +1,7 @@
 # gokaygurcan/dockerfile-ubuntu
 
 FROM ubuntu:noble
-LABEL maintainer "Gökay Gürcan <docker@gokaygurcan.com>"
+LABEL maintainer="Gökay Gürcan <docker@gokaygurcan.com>"
 
 # set up environment variables
 ENV DEBIAN_FRONTEND="noninteractive" \
@@ -79,6 +79,7 @@ RUN set -ex && \
     passwd \
     p7zip-rar \
     pkg-config \
+    procps \
     python3 \
     python3-dev \
     python3-pip \
@@ -127,5 +128,11 @@ RUN set -ex && \
     echo 'DefaultLimitSTACK=16M:infinity' >> /etc/systemd/system.conf
 
 USER $USER
+
+# install homebrew (non-root)
+RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" && \
+    echo >> /home/$USER/.bashrc && \
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/$USER/.bashrc && \
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 WORKDIR /home/$USER

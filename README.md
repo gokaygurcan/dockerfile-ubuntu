@@ -2,11 +2,12 @@
 
 ## Environment variables
 
-| Name     | Value       |
-| -------- | ----------- |
-| LANGUAGE | en_US.UTF-8 |
-| LANG     | en_US.UTF-8 |
-| LC_ALL   | en_US.UTF-8 |
+| Name     | Value            |
+| -------- | ---------------- |
+| LANGUAGE | en_US.UTF-8.     |
+| LANG     | en_US.UTF-8      |
+| LC_ALL   | en_US.UTF-8      |
+| TZ       | Europe/Amsterdam |
 
 ## Available packages
 
@@ -61,6 +62,7 @@
 - p7zip-rar
 - passwd
 - pkg-config
+- procps
 - python (python3, pip3, venv)
 - rsync
 - ssh-client
@@ -78,6 +80,10 @@
 - vim
 - wget
 - whois
+
+## Homebrew on Linux
+
+[The missing package manager for macOS (or Linux)](https://docs.brew.sh/Homebrew-on-Linux)
 
 ## Usage
 
