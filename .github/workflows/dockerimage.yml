@@ -33,16 +33,10 @@ jobs:
         docker build --file Dockerfile --tag gokaygurcan/ubuntu:latest .
         docker ps -a
 
-    - id: quickview
-      name: Quickview
-      run: |
-        docker scout quickview 
-
     - id: test
       name: Test
       run: |
         docker run --rm gokaygurcan/ubuntu printenv
-        docker run --rm gokaygurcan/ubuntu brew --version
         docker run --rm gokaygurcan/ubuntu apt --version
         docker run --rm gokaygurcan/ubuntu apt-get --version
         docker run --rm gokaygurcan/ubuntu aptitude --version
