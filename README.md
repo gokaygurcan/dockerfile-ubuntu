@@ -1,4 +1,4 @@
-# Ubuntu 24.04.1 (Noble Numbat)
+# Ubuntu 24.04.4 (Noble Numbat)
 
 ## Environment variables
 

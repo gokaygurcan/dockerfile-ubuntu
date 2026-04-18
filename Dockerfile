@@ -68,7 +68,9 @@ RUN set -ex && \
     iputils-ping \
     jq \
     language-pack-en \
-    libc++abi-dev libc++-dev libcurl4 \
+    libc++abi-dev \
+    libc++-dev \
+    libcurl4 \
     locales \
     make \
     nano \
